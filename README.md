@@ -67,7 +67,7 @@ A documentação interativa da API (Swagger UI) fica disponível em `http://loca
 
 ## Banco de dados
 
-O SQLite cria o arquivo `instance/datafilmes.db` automaticamente na primeira execução. Duas tabelas são criadas:
+O banco de dados SQLite já está incluído em `instance/datafilmes.db` com dados iniciais pré-cadastrados. Tabelas:
 
 - **generos** — `id`, `nome` (único)
 - **filmes** — `id`, `titulo`, `ano`, `nota` (0–5), `status`, `comentario`, `data_cadastro`, `genero_id` (FK → generos)
