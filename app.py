@@ -94,12 +94,8 @@ class FilmeBody(BaseModel):
 class FilmeUpdateBody(BaseModel):
     """Corpo para atualização parcial — todos os campos são opcionais."""
     model_config = {"json_schema_extra": {"example": {
-        "titulo": "Interestelar",
-        "ano": 2014,
-        "nota": 5.0,
+        "nota": 4.5,
         "status": "assistido",
-        "comentario": "Obra-prima do Nolan.",
-        "genero_id": 1,
     }}}
 
     titulo: Optional[str] = Field(None, description="Título do filme")
@@ -218,9 +214,9 @@ def rota_buscar_filme(path: FilmePath):
     return filme, 200
 
 
-@app.put("/filme/<int:filme_id>", tags=[tag_filmes], responses={200: FilmeOut, 400: ErroOut, 404: ErroOut})
+@app.patch("/filme/<int:filme_id>", tags=[tag_filmes], responses={200: FilmeOut, 400: ErroOut, 404: ErroOut})
 def rota_atualizar_filme(path: FilmePath, body: FilmeUpdateBody):
-    """Atualiza dados de um filme existente."""
+    """Atualiza parcialmente os dados de um filme existente."""
     # Verifica existência antes de tentar atualizar
     filme_existente = buscar_filme_por_id(path.filme_id)
     if filme_existente is None:

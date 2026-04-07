@@ -53,7 +53,7 @@ A documentação interativa da API (Swagger UI) fica disponível em `http://loca
 | GET    | `/filmes`          | Lista filmes (com filtros)       |
 | POST   | `/filme`           | Cadastra um filme                |
 | GET    | `/filme/<id>`      | Busca filme por ID               |
-| PUT    | `/filme/<id>`      | Atualiza um filme                |
+| PATCH  | `/filme/<id>`      | Atualiza parcialmente um filme   |
 | DELETE | `/filme/<id>`      | Remove um filme                  |
 | GET    | `/estatisticas`    | Retorna estatísticas do catálogo |
 
@@ -67,7 +67,7 @@ A documentação interativa da API (Swagger UI) fica disponível em `http://loca
 
 ## Banco de dados
 
-O banco de dados SQLite já está incluído em `instance/datafilmes.db` com dados iniciais pré-cadastrados. Tabelas:
+O SQLite cria o arquivo `instance/datafilmes.db` automaticamente na primeira execução. Duas tabelas são criadas:
 
 - **generos** — `id`, `nome` (único)
 - **filmes** — `id`, `titulo`, `ano`, `nota` (0–5), `status`, `comentario`, `data_cadastro`, `genero_id` (FK → generos)
